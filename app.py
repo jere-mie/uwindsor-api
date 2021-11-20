@@ -68,7 +68,7 @@ if __name__=='__main__':
     # run this command with any additional arg to run in production
     if len(sys.argv) > 1:
         print('<< PROD >>')
-        os.system(f"gunicorn -b '127.0.0.1:{data['port']}' website:app")
+        os.system(f"gunicorn -b '127.0.0.1:{data['port']}' app:app")
     # or just run without an additional arg to run in debug
     else:
         print('<< DEBUG >>')
