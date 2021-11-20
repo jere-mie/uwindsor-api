@@ -4,6 +4,10 @@
     <h1 class="center thin">University of Windsor Data API</h1>
     <h2 class="center thin">A simple API for UWindsor data on courses, staff, important dates, and more!</h2>
     <hr>
-    <h3 class="center thin"><b>NOTE</b>: This project is not officially affiliated with the University of Windsor. <br>All data has been collected from publically-accessible sources.</h3>
+    <h3 class="center thin"><b>NOTE</b>: This project is not officially affiliated with the University of Windsor. 
+        <br>All data has been collected from publically-accessible <a href="{{url_for('sources')}}">sources</a>. 
+        <br>We make no claim to the accuracy of this data. Please use this API at your own discretion.
+        <br><br><a href="{{ url_for('guide') }}" class="btn btn-lg btn-outline-primary">API Guide</a>
+    </h3>
 </div>
 {% endblock %}

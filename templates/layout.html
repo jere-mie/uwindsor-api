@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icon.png') }}" alt="icon"
                     style="height: 64px;"> UWindsor API</a>
@@ -41,6 +41,9 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url_for('guide') }}">Guide</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('sources') }}">Sources</a>
                     </li>
                 </ul>
             </div>

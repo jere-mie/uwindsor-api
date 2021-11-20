@@ -29,6 +29,11 @@ def home():
 def guide():
     return render_template('guide.html')
 
+# sources page
+@app.route('/sources')
+def sources():
+    return render_template('sources.html')
+
 @app.route('/api/<choice>', methods=['GET'])
 @cross_origin()
 def api(choice):
