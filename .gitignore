@@ -1,5 +1,6 @@
 # added by me
-static/
+static/*.json
+static/datasets/
 secrets.json
 venv/
 .vscode/
