@@ -39,10 +39,10 @@ def sources():
 def api(choice):
     keys = {
         "buildings":"building_name",
-        "courses":"Course Code",
+        "courses":"course_code",
         "emergency_services":"service",
         "holidays":"date",
-        "staff":"Name"
+        "staff":"name"
     }
 
     if choice not in keys: # if the route is invalid, for example /api/rooch
