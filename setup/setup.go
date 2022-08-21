@@ -12,14 +12,23 @@ import (
 )
 
 func Start() {
+	// db and server config
 	var ctx context.Context = context.TODO()
 	var db *sqlx.DB = sqlx.MustConnect("sqlite3", "file:db.sqlite")
-	var buildingservice services.BuildingService = services.NewBuildingService(db, ctx)
-	var buildingcontroller controllers.BuildingController = controllers.NewBuildingController(buildingservice)
 	var server *gin.Engine = gin.Default()
 
+	// building stuff
+	buildingservice := services.NewBuildingService(db, ctx)
+	buildingcontroller := controllers.NewBuildingController(buildingservice)
+
+	// staff stuff
+	staffservice := services.NewStaffService(db, ctx)
+	staffcontroller := controllers.NewStaffController(staffservice)
+
+	// registering routes and running
 	basePath := server.Group("/api")
 	buildingcontroller.RegisterBuildingRoutes(basePath)
+	staffcontroller.RegisterStaffRoutes(basePath)
 	log.Fatal(server.Run(":9090"))
 
 }
