@@ -28,6 +28,10 @@ func Start() {
 	staffservice := services.NewStaffService(db, ctx)
 	staffcontroller := controllers.NewStaffController(staffservice)
 
+	// course stuff
+	courseservice := services.NewCourseService(db, ctx)
+	coursecontroller := controllers.NewCourseController(courseservice)
+
 	server.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Home",
@@ -38,6 +42,7 @@ func Start() {
 	basePath := server.Group("/api")
 	buildingcontroller.RegisterBuildingRoutes(basePath)
 	staffcontroller.RegisterStaffRoutes(basePath)
+	coursecontroller.RegisterCourseRoutes(basePath)
 	log.Fatal(server.Run(":9090"))
 
 }
