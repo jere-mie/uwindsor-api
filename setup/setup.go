@@ -3,6 +3,7 @@ package setup
 import (
 	"context"
 	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jere-mie/uwindsor-api/controllers"
@@ -16,6 +17,8 @@ func Start() {
 	var ctx context.Context = context.TODO()
 	var db *sqlx.DB = sqlx.MustConnect("sqlite3", "file:db.sqlite")
 	var server *gin.Engine = gin.Default()
+	server.Static("/assets", "./assets")
+	server.LoadHTMLGlob("templates/*.html")
 
 	// building stuff
 	buildingservice := services.NewBuildingService(db, ctx)
@@ -24,6 +27,12 @@ func Start() {
 	// staff stuff
 	staffservice := services.NewStaffService(db, ctx)
 	staffcontroller := controllers.NewStaffController(staffservice)
+
+	server.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": "Home",
+		})
+	})
 
 	// registering routes and running
 	basePath := server.Group("/api")
