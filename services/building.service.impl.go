@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 
+	"github.com/jere-mie/uwindsor-api/helpers"
 	"github.com/jere-mie/uwindsor-api/models"
 	"github.com/jmoiron/sqlx"
 )
@@ -17,8 +18,11 @@ func NewBuildingService(db *sqlx.DB, ctx context.Context) BuildingService {
 }
 
 func (b *BuildingServiceImpl) GetBuilding(name *string) (*models.Building, error) {
+	var buildingNames []string
+	b.db.Select(&buildingNames, "SELECT building_name FROM Building")
+	closestName := helpers.ClosestMatch(*name, buildingNames)
 	var building = models.Building{}
-	err := b.db.Get(&building, "SELECT * FROM Building WHERE building_name = ? LIMIT 1", name)
+	err := b.db.Get(&building, "SELECT * FROM Building WHERE building_name = ? LIMIT 1", closestName)
 	return &building, err
 }
 

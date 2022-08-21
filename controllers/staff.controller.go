@@ -36,6 +36,6 @@ func (sc *StaffController) GetAllStaff(ctx *gin.Context) {
 
 func (sc *StaffController) RegisterStaffRoutes(rg *gin.RouterGroup) {
 	staffroute := rg.Group("/staff")
-	staffroute.GET("/get/:name", sc.GetStaffMember)
-	staffroute.GET("/all", sc.GetAllStaff)
+	staffroute.GET("/:name", sc.GetStaffMember)
+	staffroute.GET("/", sc.GetAllStaff)
 }

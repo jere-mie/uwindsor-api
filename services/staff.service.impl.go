@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 
+	"github.com/jere-mie/uwindsor-api/helpers"
 	"github.com/jere-mie/uwindsor-api/models"
 	"github.com/jmoiron/sqlx"
 )
@@ -17,8 +18,11 @@ func NewStaffService(db *sqlx.DB, ctx context.Context) StaffService {
 }
 
 func (b *StaffServiceImpl) GetStaffMember(name *string) (*models.Staff, error) {
+	var staffNames []string
+	b.db.Select(&staffNames, "SELECT name FROM Staff")
+	closestName := helpers.ClosestMatch(*name, staffNames)
 	var staffMember = models.Staff{}
-	err := b.db.Get(&staffMember, "SELECT * FROM Staff WHERE name = ? LIMIT 1", name)
+	err := b.db.Get(&staffMember, "SELECT * FROM Staff WHERE name = ? LIMIT 1", closestName)
 	return &staffMember, err
 }
 

@@ -1,8 +1,22 @@
 package helpers
 
-import "github.com/schollz/closestmatch"
+import (
+	distance "github.com/lithammer/fuzzysearch/fuzzy"
+)
 
-func ClosestMatch(query string, strings *[]string) string {
-	cm := closestmatch.New(*strings, []int{2})
-	return cm.Closest(query)
+func Similar(a string, b string) float64 {
+	return 1.0 / float64(distance.LevenshteinDistance(a, b))
+}
+
+func ClosestMatch(query string, strings []string) string {
+	closestString := strings[0]
+	closestRatio := Similar(closestString, query)
+	for _, n := range strings {
+		similarity := Similar(n, query)
+		if similarity > closestRatio {
+			closestRatio = similarity
+			closestString = n
+		}
+	}
+	return closestString
 }

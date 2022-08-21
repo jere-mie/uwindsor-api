@@ -36,6 +36,6 @@ func (bc *BuildingController) GetBuildings(ctx *gin.Context) {
 
 func (bc *BuildingController) RegisterBuildingRoutes(rg *gin.RouterGroup) {
 	buildingroute := rg.Group("/building")
-	buildingroute.GET("/get/:name", bc.GetBuilding)
-	buildingroute.GET("/all", bc.GetBuildings)
+	buildingroute.GET("/:name", bc.GetBuilding)
+	buildingroute.GET("/", bc.GetBuildings)
 }
