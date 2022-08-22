@@ -1,3 +1,7 @@
-*{
-    font-family: 'Courier New', Courier, monospace;
+.center{
+    text-align: center;
+}
+
+.thin{
+    font-weight: 200;
 }

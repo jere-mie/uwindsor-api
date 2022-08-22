@@ -37,9 +37,19 @@ func Start() {
 			"title": "Home",
 		})
 	})
+	server.GET("/guide", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "guide.html", gin.H{
+			"title": "Guide",
+		})
+	})
+	server.GET("/sources", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "sources.html", gin.H{
+			"title": "Sources",
+		})
+	})
 
 	// registering routes and running
-	basePath := server.Group("/api")
+	basePath := server.Group("/v1")
 	buildingcontroller.RegisterBuildingRoutes(basePath)
 	staffcontroller.RegisterStaffRoutes(basePath)
 	coursecontroller.RegisterCourseRoutes(basePath)
