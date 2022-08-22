@@ -1,0 +1,72 @@
+{{ define "boiler-top.html" }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UWindsor API | {{ .title }}</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Metatags with site info -->
+    <meta property="og:site_name" content="UWindsor API" />
+    <meta property="og:title" content="A Simple API for UWindsor Data" />
+    <meta
+      property="og:description"
+      content="A simple API for accessing UWindsor data about courses, staff, important dates, and more!"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="shortcut icon" type="image/png" href="/assets/icon.png" />
+
+    <!--Style-->
+    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+
+    <!-- Bootstrap CDNs -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+      integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+      <a class="navbar-brand" href="/">UWindsor API</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/guide">Guide</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/sources">Sources</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br><br><br>
+    {{ end }}

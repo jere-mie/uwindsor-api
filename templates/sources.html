@@ -1,5 +1,4 @@
-{% extends 'layout.html' %}
-{% block content %}
+{{ template "boiler-top.html" . }}
 <div class="container">
     <h1 class="center thin">University of Windsor Data API - Sources</h1>
     <h2 class="center thin">Where the data in this API has been sourced from</h2>
@@ -29,18 +28,8 @@
             <td>Buildings</td>
             <td><a href="http://web2.uwindsor.ca/pac/campusmap/index.php">Source</a> (<a href="http://maps.google.com">Google Maps</a> may have also been used for latitude and longitude)</td>
           </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Holidays</td>
-            <td><a href="https://www.uwindsor.ca/humanresources/faculty-staff/university-holidays">Source</a></td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Emergency Services</td>
-            <td><a href="https://www.uwindsor.ca/emergency-services">Source</a></td>
-          </tr>
         </tbody>
       </table>
 </div>
 <br><br><br>
-{% endblock %}
+{{ template "boiler-bottom.html" }}
