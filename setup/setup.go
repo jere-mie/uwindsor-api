@@ -3,7 +3,6 @@ package setup
 import (
 	"context"
 	"log"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jere-mie/uwindsor-api/controllers"
@@ -32,27 +31,15 @@ func Start() {
 	courseservice := services.NewCourseService(db, ctx)
 	coursecontroller := controllers.NewCourseController(courseservice)
 
-	server.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": "Home",
-		})
-	})
-	server.GET("/guide", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "guide.html", gin.H{
-			"title": "Guide",
-		})
-	})
-	server.GET("/sources", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "sources.html", gin.H{
-			"title": "Sources",
-		})
-	})
+	// html routes
+	controllers.RegisterHTMLRoutes(server.Group("/"))
 
-	// registering routes and running
-	basePath := server.Group("/v1")
-	buildingcontroller.RegisterBuildingRoutes(basePath)
-	staffcontroller.RegisterStaffRoutes(basePath)
-	coursecontroller.RegisterCourseRoutes(basePath)
+	// REST API Routes
+	v1Path := server.Group("/v1")
+	buildingcontroller.RegisterBuildingRoutes(v1Path)
+	staffcontroller.RegisterStaffRoutes(v1Path)
+	coursecontroller.RegisterCourseRoutes(v1Path)
+
 	log.Fatal(server.Run(":9090"))
 
 }
