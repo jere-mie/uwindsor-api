@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jere-mie/uwindsor-api/controllers"
 	"github.com/jere-mie/uwindsor-api/services"
@@ -16,6 +17,7 @@ func Start() {
 	var ctx context.Context = context.TODO()
 	var db *sqlx.DB = sqlx.MustConnect("sqlite3", "file:db.sqlite")
 	var server *gin.Engine = gin.Default()
+	server.Use(cors.Default())
 	server.Static("/assets", "./assets")
 	server.LoadHTMLGlob("templates/*.html")
 

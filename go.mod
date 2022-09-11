@@ -3,6 +3,7 @@ module github.com/jere-mie/uwindsor-api
 go 1.19
 
 require (
+	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/lithammer/fuzzysearch v1.1.5
